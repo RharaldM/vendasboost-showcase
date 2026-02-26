@@ -1,62 +1,66 @@
 # VendasBoost PRO
 
-> SaaS automation platform for social media marketing
+> Plataforma SaaS de automação para marketing em redes sociais
+>
+> *SaaS automation platform for social media marketing*
 
-![Status](https://img.shields.io/badge/Status-Production-brightgreen)
-![Version](https://img.shields.io/badge/Version-10.0-blue)
-
----
-
-## Overview
-
-VendasBoost PRO is a complete SaaS platform that automates social media marketing workflows. It allows businesses to manage posting across multiple groups, schedule content, create marketplace listings, and track performance — all from a single dashboard.
-
-The system supports multiple companies with employee management, subscription plans with usage limits, and a full admin panel for platform management.
+![Status](https://img.shields.io/badge/Status-Produção-brightgreen)
+![Version](https://img.shields.io/badge/Versão-10.0-blue)
 
 ---
 
-## Key Features
+## Visão Geral | Overview
 
-**Automation Engine**
-- Post to multiple groups simultaneously
-- Create marketplace listings
-- Single scheduling (date/time) and recurring weekly schedules
-- Discover and join relevant groups automatically
-- Multi-account support
+O VendasBoost PRO é uma plataforma SaaS completa que automatiza fluxos de marketing em redes sociais. Permite que empresas gerenciem postagens em múltiplos grupos, agendem conteúdo, criem anúncios em marketplaces e acompanhem performance — tudo a partir de um único painel.
 
-**SaaS Platform**
-- Multi-tenant architecture (companies and employees)
-- Subscription plans with tiered usage limits
-- Payment processing via MercadoPago (webhooks)
-- Usage tracking and token-based metering
+O sistema suporta múltiplas empresas com gestão de funcionários, planos de assinatura com limites de uso e um painel administrativo completo para gerenciamento da plataforma.
 
-**Admin Dashboard**
-- Platform-wide metrics and KPIs
-- Company and employee management
-- Audit logging
-- Extension version management and distribution
-
-**Security**
-- JWT authentication with middleware
-- Rate limiting per route
-- Input validation and sanitization
-- Code obfuscation for client distribution
-- XSS protection and cookie-only auth
+*VendasBoost PRO is a complete SaaS platform that automates social media marketing workflows. It allows businesses to manage posting across multiple groups, schedule content, create marketplace listings, and track performance — all from a single dashboard. The system supports multiple companies with employee management, subscription plans with usage limits, and a full admin panel for platform management.*
 
 ---
 
-## Architecture
+## Funcionalidades Principais | Key Features
+
+**Motor de Automação**
+- Postagem em múltiplos grupos simultaneamente
+- Criação de anúncios em marketplaces
+- Agendamento único (data/hora) e recorrente semanal
+- Descoberta e entrada automática em grupos relevantes
+- Suporte a múltiplas contas
+
+**Plataforma SaaS**
+- Arquitetura multi-tenant (empresas e funcionários)
+- Planos de assinatura com limites de uso por nível
+- Processamento de pagamentos via MercadoPago (webhooks)
+- Rastreamento de uso e medição por tokens
+
+**Painel Administrativo**
+- Métricas e KPIs de toda a plataforma
+- Gestão de empresas e funcionários
+- Log de auditoria
+- Gerenciamento de versões e distribuição da extensão
+
+**Segurança**
+- Autenticação JWT com middleware
+- Rate limiting por rota
+- Validação e sanitização de entrada
+- Ofuscação de código para distribuição
+- Proteção contra XSS e autenticação via cookies
+
+---
+
+## Arquitetura | Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    Chrome Extension                       │
+│                    Extensão Chrome                        │
 │              (Content Scripts + Popup UI)                 │
 └──────────────────────┬──────────────────────────────────┘
                        │ REST API
 ┌──────────────────────▼──────────────────────────────────┐
 │                   Backend (Node.js)                       │
 │  ┌─────────┐  ┌──────────┐  ┌────────────┐              │
-│  │  Auth    │  │  Routes  │  │  Services  │              │
+│  │  Auth    │  │  Rotas   │  │  Serviços  │              │
 │  │Middleware│  │  (REST)  │  │  (Email,   │              │
 │  └─────────┘  └──────────┘  │   Logger)  │              │
 │                              └────────────┘              │
@@ -67,58 +71,60 @@ The system supports multiple companies with employee management, subscription pl
 └──────────────────────┬──────────────────────────────────┘
                        │
           ┌────────────▼────────────┐
-          │     Database (SQL)      │
+          │    Banco de Dados (SQL)  │
           └─────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────┐
-│                    Admin Panel                            │
-│            (Static HTML + Vanilla JS)                    │
+│                    Painel Admin                           │
+│            (HTML Estático + Vanilla JS)                   │
 └─────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────┐
 │               CI/CD (GitHub Actions)                     │
-│           Automated testing and deployment                │
+│         Testes automatizados e deploy contínuo           │
 └─────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Tech Stack
+## Stack Tecnológica | Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
+| Camada | Tecnologia |
+|--------|-----------|
 | **Runtime** | Node.js, Express |
-| **Database** | SQL (Sequelize ORM) |
-| **Auth** | JWT, cookie-based sessions |
-| **Payments** | MercadoPago SDK (subscriptions + webhooks) |
-| **Client** | Chrome Extension (Manifest V3) |
-| **Admin** | Static HTML + Vanilla JavaScript |
-| **Testing** | Jest (unit + integration, 14+ test suites) |
-| **CI/CD** | GitHub Actions (CI pipeline + CD deployment) |
-| **Process** | PM2 (production process manager) |
-| **Security** | Rate limiter, validators, code obfuscation |
+| **Banco de Dados** | SQL (Sequelize ORM) |
+| **Autenticação** | JWT, sessões via cookies |
+| **Pagamentos** | MercadoPago SDK (assinaturas + webhooks) |
+| **Cliente** | Extensão Chrome (Manifest V3) |
+| **Admin** | HTML Estático + Vanilla JavaScript |
+| **Testes** | Jest (unitários + integração, 14+ suítes) |
+| **CI/CD** | GitHub Actions (pipeline CI + deploy CD) |
+| **Processo** | PM2 (gerenciador de processos em produção) |
+| **Segurança** | Rate limiter, validadores, ofuscação de código |
 
 ---
 
-## Testing
+## Testes | Testing
 
-The project includes comprehensive tests covering:
+O projeto inclui testes abrangentes cobrindo:
 
-- **Unit tests** — Authentication middleware, plan limits, input validators
-- **Integration tests** — All REST routes (auth, admin, companies, plans, subscriptions, usage, webhooks, extension, health)
-- **Security tests** — Webhook signature verification, route protection
+- **Testes unitários** — Middleware de autenticação, limites de plano, validadores de entrada
+- **Testes de integração** — Todas as rotas REST (auth, admin, empresas, planos, assinaturas, uso, webhooks, extensão, health)
+- **Testes de segurança** — Verificação de assinatura de webhooks, proteção de rotas
+
+---
+
+## Números do Projeto | Project Stats
+
+| Métrica | Valor |
+|---------|-------|
+| Total de arquivos | 169 |
+| Suítes de teste | 14+ |
+| Versão | 10.0 |
+| Período de desenvolvimento | Dez 2025 — Fev 2026 |
 
 ---
 
-## Project Stats
-
-| Metric | Value |
-|--------|-------|
-| Total files | 169 |
-| Test suites | 14+ |
-| Version | 10.0 |
-| Development period | Dec 2025 — Feb 2026 |
-
----
+*Este é um repositório vitrine. O código-fonte está em um repositório privado.*
 
 *This is a showcase repository. The source code is in a private repository.*
