@@ -7,6 +7,8 @@
 ![Status](https://img.shields.io/badge/Status-Produção-brightgreen)
 ![Version](https://img.shields.io/badge/Versão-10.0-blue)
 
+[![Demo](https://img.shields.io/badge/Demo-vendasboost.sinowavetech.com.br-blue?style=flat&logo=google-chrome&logoColor=white)](https://vendasboost.sinowavetech.com.br/)
+
 ---
 
 ## Visão Geral | Overview
